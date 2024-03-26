@@ -44,6 +44,9 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.telegram',
+    'allauth.socialaccount.providers.yandex',
+    'allauth.socialaccount.providers.vk',
     "debug_toolbar",
 
     'products',
@@ -166,14 +169,16 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-# EMAIL_HOST = 'smtp.yandex.com'
-# EMAIL_PORT = 465
-# EMAIL_HOST_USER = 'st.ore-flowers@yandex.ru'
-# EMAIL_HOST_PASSWORD = 'Programmer12345'
-# EMAIL_USE_SSL = True
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.yandex.com'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'st.ore-flowers@yandex.ru'
+EMAIL_HOST_PASSWORD = 'unrvuomjnjjfjcnb'
+EMAIL_USE_SSL = True
 
 
+# from users.models import User
+#  User.objects.all()
 # OAuth
 
 AUTHENTICATION_BACKENDS = [
@@ -181,13 +186,41 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     # `allauth` specific authentication methods, such as login by email
     'allauth.account.auth_backends.AuthenticationBackend',
+
 ]
+# CORS Config
+# CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ALLOW_CREDENTIALS = False
+
+# SITE_ID = 2
+
+SOCIAL_AUTH_YANDEX_OAUTH2_REDIRECT_URI = 'http://127.0.0.1:8000/'
 
 SOCIALACCOUNT_PROVIDERS = {
     "github": {
         "VERIFIED_EMAIL": True
     },
+
+    'telegram': {
+        'APP': {
+            'client_id': '21604369',
+            'secret': '8c9ab1c0db35d21440f64efbaeaedfe1',
+        },
+        'AUTH_PARAMS': {'auth_date_validity': 30},
+    },
+
+    'yandex': {
+        'CLIENT_ID': '017a93ec94a6435597101f51e3b71dee',
+        'SECRET': '3f1e5f4e577b447798e97464d28788aa',
+    },
+    'vk': {
+        'APP_ID': '51881524',
+        'SECRET': 'D8qZwxLeVs8pKkMQ5NIH',
+        "VERIFIED_EMAIL": True
+    }
 }
+
+SECURE_CROSS_ORIGIN_OPENER_POLICY = None
 
 INTERNAL_IPS = [
     "127.0.0.1",
@@ -208,3 +241,7 @@ CSRF_COOKIE_SECURE = True
 STRIPE_PUBLIC_KEY = "pk_test_51Ok9IZFAyFbvTwDMtVgKONOiZLxK1Zh6DPWG8WJwpUfVtYvnFMnN5kKA8rougQMVjrsEeC5MmVu6JsrBZD8iiNuX003Htv7sNI"
 STRIPE_SECRET_KEY = 'sk_test_51Ok9IZFAyFbvTwDMnU8XvJQkk7a3ZYJ0izN2k0ZuhBLi0tgqRMtF8N9b1tolomLcYPjKvX48hQicDrOAaxHSGA6N00lJmh54gf'
 STRIPE_WEBHOOK_SECRET = 'whsec_ec0fef06bafecfc6e777d008ac0785afcb34d6c0b805a75a2b48ad774e8c25a0'
+
+#celery
+# CELERY_BROKER_URL = 'redis://127.0.0.1:6379'
+# CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379'
