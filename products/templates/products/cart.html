@@ -1,0 +1,135 @@
+{% extends 'products/basefw.html' %}
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="en">
+
+
+
+<body>
+
+
+    <!--header area start-->
+
+    <!--offcanvas menu area start-->
+    <div class="off_canvars_overlay">
+
+    </div>
+
+
+    <!--offcanvas menu area end-->
+
+    <!--header area end-->
+
+    <!--breadcrumbs area start-->
+    {% block breadcrumbs %}
+    <div class="breadcrumbs_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb_content">
+                        <h3>Корзина</h3>
+                        <ul>
+                            <li><a href="{% url 'index' %}">home</a></li>
+                            <li>Карта товаров</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+    <!--breadcrumbs area end-->
+
+    <!--shopping cart area start -->
+    {% block content %}
+    <div class="shopping_cart_area mt-100">
+        <div class="container">
+            <form action="#">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="table_desc">
+                            <div class="cart_page table-responsive">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th class="product_remove">Удалить</th>
+                                            <th class="product_thumb">Изображение</th>
+                                            <th class="product_name">Продукт</th>
+                                            <th class="product-price">Цена</th>
+                                            <th class="product_quantity">Количество</th>
+                                            <th class="product_total">Итог</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% if baskets %}
+                                        {% for basket in baskets %}
+                                            <tr>
+                                                <td class="product_remove"><a href="{% url 'products:basket_remove' basket.id %}"><i class="fa fa-trash-o"></i></a>
+                                                </td>
+                                                <td class="product_thumb"><a href="#"><img
+                                                            src="{% static 'assets/img/s-product/product.jpg' %}" alt=""></a></td>
+                                                <td class="product_name"><a href="#">{{ basket.product.name }}</a></td>
+                                                <td class="product-price">{{ basket.sum }}</td>
+                                                <td class="product_quantity"><label>Quantity</label> <input min="1"
+                                                        max="100" value="{{ basket.quntity }}" type="number"></td>
+                                                <td class="product_total">£130.00</td>
+
+
+                                            </tr>
+                                        {% endfor %}
+                                    {% endif %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="cart_submit">
+                                <button type="submit">update cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--coupon code area start-->
+                <div class="coupon_area">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="coupon_code right">
+                                <h3>Корзина</h3>
+                                <div class="coupon_inner">
+                                    <div class="cart_subtotal">
+                                        <p>Итого</p>
+                                        <p class="cart_amount">{{ baskets.total_sum }}</p>
+                                    </div>
+                                    <div class="checkout_btn">
+                                        <a href="{% url 'orders:order_create' %}">Оформить заказ</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--coupon code area end-->
+            </form>
+        </div>
+    </div>
+    {% endblock %}
+    <!--shopping cart area end -->
+
+    <!--brand area start-->
+
+    <!--brand area end-->
+
+    <!--footer area start-->
+
+    <!--footer area end-->
+
+    <!-- JS
+============================================ -->
+    <!--jquery min js-->
+
+
+
+</body>
+
+</html>

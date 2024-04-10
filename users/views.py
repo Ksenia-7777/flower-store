@@ -33,7 +33,8 @@ class UserRegistrationView(CreateView):
 class UserProfileView(TitleMixin, UpdateView):
     model = User
     form_class = UserProfileForm
-    template_name = 'users/profile.html'
+    # template_name = 'users/profile.html'
+    template_name = 'users/MyAccount.html'
     title = 'Store - Личный кабинет'
 
     def get_success_url(self):

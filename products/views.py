@@ -5,31 +5,40 @@ from django.views.generic.list import ListView
 
 from common.views import TitleMixin
 # Create your views here.
-from products.models import Basket, Product
+from products.models import Basket, Product, ProductCategory
 
+from django.core.paginator import Paginator
 
 class IndexView(TitleMixin, TemplateView):
-    template_name = 'products/index.html'
+    template_name = 'products/index-3.html'
     title = 'Store'
 
+class WishlistView(TitleMixin, TemplateView):
+    template_name = 'products/wishlist.html'
+    title = 'Wishlist'
 
+class CartView(TitleMixin, TemplateView):
+    template_name = 'products/cart.html'
+    title = 'Cart'
 
 class ProductsListView(TitleMixin, ListView):
     model = Product
-    template_name = 'products/products.html'
+    # template_name = 'products/products.html'
+    template_name = 'products/shop.html'
     paginate_by = 3
     title = 'Store - Каталог'
+
 
     def get_queryset(self):
         queryset = super(ProductsListView, self).get_queryset()
         category_id = self.kwargs.get('category_id')
+        print()
         return queryset.filter(category_id=category_id) if category_id else queryset
     #
     # def get_context_data(self, **kwargs):
     #     context = super().get_context_data(**kwargs)
     #     context['categories'] = ProductCategory.objects.all()
     #     return context
-
 
 
 
@@ -48,8 +57,9 @@ def basket_add(request, product_id):
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 @login_required
-def basket_remove(request, basket_id):
+def basket_remove(request,  basket_id):
     basket = Basket.objects.get(id=basket_id)
     basket.delete()
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
 

@@ -12,4 +12,8 @@ urlpatterns = [
     path('baskets/add/<int:product_id>/', basket_add, name='basket_add'),
     path('baskets/remove/<int:basket_id>/', basket_remove, name='basket_remove'),
 
+    path('wishlist/', WishlistView.as_view(), name='wishlist'),
+    path('cart/', CartView.as_view(), name='cart'),
+
+
 ]

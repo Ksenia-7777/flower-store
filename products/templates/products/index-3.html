@@ -1,0 +1,489 @@
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Lukani – Plant and Flower Shop eCommerce HTML Template </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="static/assets/img/favicon.ico">
+
+    <!-- CSS
+    ========================= -->
+    <!--bootstrap min css-->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <!--owl carousel min css-->
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+    <!--slick min css-->
+    <link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+    <!--magnific popup min css-->
+    <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+    <!--font awesome css-->
+    <link rel="stylesheet" href="{% static 'assets/css/font.awesome.css' %}">
+    <!--animate css-->
+    <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
+    <!--jquery ui min css-->
+    <link rel="stylesheet" href="{% static 'assets/css/jquery-ui.min.css' %}">
+    <!--slinky menu css-->
+    <link rel="stylesheet" href="{% static 'assets/css/slinky.menu.css' %}">
+    <!--plugins css-->
+    <link rel="stylesheet" href="{% static 'assets/css/plugins.css' %}">
+
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+
+    <!--modernizr min js here-->
+    <script src="{% static 'assets/js/vendor/modernizr-3.7.1.min.js' %}"></script>
+</head>
+
+<body>
+
+    <!--header area start-->
+
+    <!--offcanvas menu area start-->
+
+
+
+    <!--offcanvas menu area end-->
+    <header>
+        <div class="main_header header_3 header_transparent sticky-header">
+            <div class="header_container">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-lg-2 col-md-3 col-4">
+                            <div class="logo">
+                                <a href="index.html"><img src="{% static 'assets/img/logo/logo.png' %}" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <!--main menu start-->
+                            <div class="main_menu menu_three menu_position">
+                                <nav>
+                                    <ul>
+                                        <li><a class="active" href="{% url 'index' %}">home</a>
+
+                                        </li>
+                                        <li class="mega_items"><a href="{% url 'products:index' %}">shop</a>
+
+                                        </li>
+                                        <li><a href="blog.html">blog</a>
+
+                                        </li>
+                                        <li><a href="#">pages </a>
+
+                                        </li>
+                                        <li><a href="contact.html"> Contact Us</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <!--main menu end-->
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-sm-5 col-6">
+                            <div class="header_right_info header_right_two">
+
+                                <div class="header_account_area">
+                                    {% if user.is_authenticated %}
+                                    <div class="header_account-list top_links">
+                                        <a href="#"><i class="icon-users"></i></a>
+
+                                            <ul class="dropdown_links">
+                                                <li><a href="{% url 'users:profile' user.id %}">Профиль </a></li>
+                                                <li><a href="{% url 'orders:orders_list' %}">Заказы</a></li>
+                                                <li><a href="{% url 'users:logout' %}">выйти</a></li>
+                                                {% if user.is_superuser or user.is_staff %}
+                                                    <li><a href="{% url 'admin:index' %}">админ</a></li>
+                                                {% endif %}
+                                            </ul>
+
+                                    </div>
+                                    <div class="header_account-list header_wishlist">
+                                        <a href="{% url 'products:wishlist' %}"><i class="icon-heart"></i></a>
+                                    </div>
+                                    <div class="header_account-list  mini_cart_wrapper">
+                                        <a href="{% url 'products:cart' %}"><i class="icon-shopping-bag"></i><span
+                                                class="item_count">{{ baskets.total_quantity }}</span></a>
+                                    </div>
+                                    {% else %}
+                                        <div class="header_account-list top_links">
+                                            <a href="#"><i class="icon-users"></i></a>
+                                                <ul class="dropdown_links">
+                                                    <li><a href="{% url 'users:login' %}">войти</a></li>
+                                                </ul>
+                                        </div>
+                                        <div class="header_account-list header_wishlist">
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--mini cart-->
+        <div class="mini_cart">
+            <div class="cart_gallery">
+                <div class="cart_close">
+                    <div class="cart_text">
+                        <h3>cart</h3>
+                    </div>
+                    <div class="mini_cart_close">
+                        <a href="javascript:void(0)"><i class="icon-x"></i></a>
+                    </div>
+                </div>
+                <div class="cart_item">
+                    <div class="cart_img">
+                        <a href="#"><img src="{% static 'assets/img/s-product/product.jpg' %}" alt=""></a>
+                    </div>
+                    <div class="cart_info">
+                        <a href="#">Primis In Faucibus</a>
+                        <p>1 x <span> $65.00 </span></p>
+                    </div>
+                    <div class="cart_remove">
+                        <a href="#"><i class="icon-x"></i></a>
+                    </div>
+                </div>
+                <div class="cart_item">
+                    <div class="cart_img">
+                        <a href="#"><img src="{% static 'assets/img/s-product/product2.jpg' %}" alt=""></a>
+                    </div>
+                    <div class="cart_info">
+                        <a href="#">Letraset Sheets</a>
+                        <p>1 x <span> $60.00 </span></p>
+                    </div>
+                    <div class="cart_remove">
+                        <a href="#"><i class="icon-x"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mini_cart_table">
+                <div class="cart_table_border">
+                    <div class="cart_total">
+                        <span>Sub total:</span>
+                        <span class="price">$125.00</span>
+                    </div>
+                    <div class="cart_total mt-10">
+                        <span>total:</span>
+                        <span class="price">$125.00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="mini_cart_footer">
+                <div class="cart_button">
+                    <a href="cart.html"><i class="fa fa-shopping-cart"></i> View cart</a>
+                </div>
+                <div class="cart_button">
+                    <a class="active" href="checkout.html"><i class="fa fa-sign-in"></i> Checkout</a>
+                </div>
+
+            </div>
+        </div>
+        <!--mini cart end-->
+    </header>
+    <!--header area end-->
+
+    <!--slider area start-->
+    <section class="slider_section slider_s_two">
+        <div class="slider_area owl-carousel">
+            <div class="single_slider d-flex align-items-center" data-bgimg="static/assets/img/slider/slider7.jpg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="slider_content">
+                                <span>AMAZING FROM Lukani </span>
+                                <h1>BIG SALE <br> NEW ARRIVALS</h1>
+                                <p>Discount 20% Off For Lukani Members </p>
+                                <a class="button" href="{% url 'products:index' %}">Discover Now </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="single_slider d-flex align-items-center" data-bgimg="static/assets/img/slider/slider8.jpg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="slider_content">
+                                <span>AMAZING FROM Lukani </span>
+                                <h1>lukani <br> <span>trending 2019</span></h1>
+                                <p>Discount 20% Off For Lukani Members </p>
+                                <a class="button" href="{% url 'products:index' %}">Discover Now </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="single_slider d-flex align-items-center" data-bgimg="static/assets/img/slider/slider9.jpg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="slider_content">
+                                <span>AMAZING FROM Lukani </span>
+                                <h1>houseplant <br> <span>amazing cholce</span></h1>
+                                <p>Discount 20% Off For Lukani Members </p>
+                                <a class="button" href="{% url 'products:index' %}">Discover Now </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--slider area end-->
+
+    <!--lukani store title start-->
+    <div class="welcome_lukani_store">
+        <div class="container">
+            <div class="welcome_lukani_container">
+                <div class="row">
+                    <div class="col-lg-5 col-md-5">
+                        <div class="welcome_lukani_thumb">
+                            <img src="{% static 'assets/img/bg/img-top-vogue3.png' %}" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-md-7">
+                        <div class="welcome_lukani_content">
+                            <div class="welcome_lukani_header">
+                                <h3>Welcome to Lukani store</h3>
+                                <h2>Lukani History</h2>
+                            </div>
+                            <div class="welcome_lukani_desc">
+                                <p>Commodo sociosqu venenatis cras dolor sagittis integer luctus sem primis eget
+                                    maecenas
+                                    sedurna malesuada consectetuer.</p>
+                                <p>Ornare integer commodo mauris et ligula purus, praesent cubilia laboriosam viverra.
+                                    Mattis id rhoncus. Integer lacus eu volutpat fusce. Elit etiam phasellus suscipit
+                                    suscipit dapibus,
+                                    condimentum tempor quis, turpis luctus dolor sapien vivamus.</p>
+                            </div>
+                            <div class="welcome_lukani_footer">
+                                <img src="{% static 'assets/img/bg/signature.png' %}" alt="">
+                                <p><span>john doe</span> – CEO Lukani</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--lukani store titlev end-->
+
+    <!--product area start-->
+    <div class="product_area product_style2">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section_title">
+                        <h2>Featured Products</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="product_style2_ocntainer">
+                <div class="row">
+                    <div class="product_carousel product2_column5 owl-carousel">
+                        <div class="col-lg-3">
+                            <div class="product_items">
+                                <article class="single_product">
+                                    <figure>
+                                        <div class="product_thumb">
+                                            <a class="primary_img" href="product-details.html"><img
+                                                    src="{% static 'assets/img/product/product1.jpg' %}" alt=""></a>
+                                            <div class="label_product">
+                                                <span class="label_sale">-7%</span>
+                                            </div>
+                                            <div class="action_links">
+                                                <ul>
+                                                    <li class="add_to_cart"><a href="cart.html" title="Add to cart"><i
+                                                                class="icon-shopping-bag"></i></a></li>
+
+                                                    <li class="wishlist"><a href="wishlist.html"
+                                                            title="Add to Wishlist"><i class="icon-heart"></i></a></li>
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <figcaption class="product_content">
+                                            <div class="product_rating">
+                                                <ul>
+                                                    <li><a href="#"><i class="icon-star"></i></a></li>
+                                                    <li><a href="#"><i class="icon-star"></i></a></li>
+                                                    <li><a href="#"><i class="icon-star"></i></a></li>
+                                                    <li><a href="#"><i class="icon-star"></i></a></li>
+                                                    <li><a href="#"><i class="icon-star"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <h4 class="product_name"><a href="product-details.html">commodo augue
+                                                    nisi</a></h4>
+                                            <div class="price_box">
+                                                <span class="current_price">£69.00</span>
+                                                <span class="old_price">£74.00</span>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </article>
+                                <article class="single_product">
+                                    <figure>
+                                        <div class="product_thumb">
+                                            <a class="primary_img" href="product-details.html"><img
+                                                    src="{% static 'assets/img/product/product2.jpg' %}" alt=""></a>
+                                            <div class="label_product">
+                                                <span class="label_sale">-9%</span>
+                                            </div>
+                                            <div class="action_links">
+                                                <ul>
+                                                    <li class="add_to_cart"><a href="cart.html" title="Add to cart"><i
+                                                                class="icon-shopping-bag"></i></a></li>
+
+                                                    <li class="wishlist"><a href="wishlist.html"
+                                                            title="Add to Wishlist"><i class="icon-heart"></i></a></li>
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <figcaption class="product_content">
+                                            <div class="product_rating">
+                                                <ul>
+                                                    <li><a href="#"><i class="icon-star"></i></a></li>
+                                                    <li><a href="#"><i class="icon-star"></i></a></li>
+                                                    <li><a href="#"><i class="icon-star"></i></a></li>
+                                                    <li><a href="#"><i class="icon-star"></i></a></li>
+                                                    <li><a href="#"><i class="icon-star"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <h4 class="product_name"><a href="product-details.html">eget sagittis</a>
+                                            </h4>
+                                            <div class="price_box">
+                                                <span class="current_price">£65.00</span>
+                                                <span class="old_price">£70.00</span>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </article>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--product area end-->
+
+    <!--testimonial area start-->
+
+    <!--testimonial area end-->
+
+    <!--brand area start-->
+
+    <!--brand area end-->
+
+    <!--blog area start-->
+
+    <!--blog area end-->
+
+    <!--newsletter area start-->
+
+    <!--newsletter area end-->
+
+    <!--footer area start-->
+    <footer class="footer_widgets">
+        <div class="footer_top">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-2 col-md-3 col-sm-6">
+
+                    </div>
+                    <div class="col-lg-4 col-md-5">
+                        <div class="widgets_container widget_app">
+                            <div class="footer_logo">
+                                <a href="index.html"><img src="{% static 'assets/img/logo/logo.png' %}" alt=""></a>
+                            </div>
+
+                            <div class="footer_social">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="footer_bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="copyright_area">
+                            <p class="copyright-text">&copy; 2021 <a href="index.html">Lukani</a>. Made with <i
+                                    class="fa fa-heart text-danger"></i> by <a href="https://hasthemes.com/"
+                                    target="_blank">HasThemes</a> </p>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="footer_payment">
+                            <a href="#"><img src="{% static 'assets/img/icon/payment.png' %}" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--footer area end-->
+
+    <!-- modal area start-->
+
+    <!-- modal area end-->
+
+
+
+    <!-- JS
+============================================ -->
+    <!--jquery min js-->
+    <script src="{% static 'assets/js/vendor/jquery-3.4.1.min.js' %}"></script>
+    <!--popper min js-->
+    <script src="{% static 'assets/js/popper.js' %}"></script>
+    <!--bootstrap min js-->
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <!--owl carousel min js-->
+    <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+    <!--slick min js-->
+    <script src="{% static 'assets/js/slick.min.js' %}"></script>
+    <!--magnific popup min js-->
+    <script src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
+    <!--counterup min js-->
+    <script src="{% static 'assets/js/jquery.counterup.min.js' %}"></script>
+    <!--jquery countdown min js-->
+    <script src="{% static 'assets/js/jquery.countdown.js' %}"></script>
+    <!--jquery ui min js-->
+    <script src="{% static 'assets/js/jquery.ui.js' %}"></script>
+    <!--jquery elevatezoom min js-->
+    <script src="{% static 'assets/js/jquery.elevatezoom.js' %}"></script>
+    <!--isotope packaged min js-->
+    <script src="{% static 'assets/js/isotope.pkgd.min.js' %}"></script>
+    <!--slinky menu js-->
+    <script src="{% static 'assets/js/slinky.menu.js' %}"></script>
+    <!-- Plugins JS -->
+    <script src="{% static 'assets/js/plugins.js' %}"></script>
+
+    <!-- Main JS -->
+    <script src="{% static 'assets/js/main.js' %}"></script>
+
+
+
+</body>
+
+</html>

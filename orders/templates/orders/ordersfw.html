@@ -1,0 +1,59 @@
+{% extends 'products/basefw.html' %}
+{% load humanize %}
+
+
+    <!--breadcrumbs area start-->
+    {% block breadcrumbs %}
+    <div class="breadcrumbs_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb_content">
+                        <h3>Заказы</h3>
+                        <ul>
+                            <li><a href="{% url 'index' %}">home</a></li>
+                            <li>Заказы</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+    <!--breadcrumbs area end-->
+
+{% block content %}
+    <section>
+        <div class="container pt-5">
+            <div class="text-center mt-5">
+
+                <div class="orders mt-5">
+                    <table class="table">
+                        <thead>
+                        <tr class="table-light">
+                            <th scope="col">#</th>
+                            <th scope="col">Статус</th>
+                            <th scope="col">Создан</th>
+                            <th scope="col">Итого</th>
+                            <th scope="col">Действие</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for order in object_list %}
+                            <tr>
+                                <th scope="row">{{ order.id }}</th>
+                                <td>{{ order.get_status_display }}</td>
+                                <td>{{ order.created }}</td>
+                                <td>{{ order.basket_history.total_sum }} руб.</td>
+                                <td>
+                                    <a href="{% url 'orders:order' order.id %}">просмотреть</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

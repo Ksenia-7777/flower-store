@@ -1,0 +1,61 @@
+{% extends 'products/basefw.html' %}
+{% load humanize %}
+
+    <!--breadcrumbs area start-->
+    {% block breadcrumbs %}
+    <div class="breadcrumbs_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb_content">
+                        <h3>Детали заказа</h3>
+                        <ul>
+                            <li><a href="{% url 'index' %}">home</a></li>
+                            <li>Детали заказа</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+    <!--breadcrumbs area end-->
+
+{% block content %}
+    <section>
+        <div class="container pt-5">
+            <div class="text-center mt-5">
+                <h3>Заказ #{{ object.id }}</h3>
+                <div class="orders mt-5">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Название</th>
+                            <th scope="col">Кол-во</th>
+                            <th scope="col">Цена</th>
+                            <th scope="col">Сумма</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for purchased_item in object.basket_history.purchased_items %}
+                            <tr>
+                                <th scope="row">
+                                    {{ purchased_item.product_name }}
+                                </th>
+                                <td>{{ purchased_item.quantity }}</td>
+                                <td>{{ purchased_item.price|intcomma }} руб.</td>
+                                <td>{{ purchased_item.sum|intcomma }} руб.</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <p class="float-right h4 mt-3">Итого {{ object.basket_history.total_sum|intcomma }} руб.</p>
+                </div>
+            </div>
+        </div>
+        <div class="container pt-5">
+        </div>
+        <div class="container pt-5">
+        </div>
+    </section>
+{% endblock %}
