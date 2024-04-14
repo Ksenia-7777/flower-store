@@ -72,3 +72,19 @@ class Basket(models.Model):
             'sum': float(self.sum()),
         }
         return basket_item
+
+
+class Wishlist(models.Model):
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    product = models.ForeignKey(to=Product, on_delete=models.CASCADE)
+    quntity = models.PositiveSmallIntegerField(default=0)
+    created_timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'Wishlist для {self.user.username} | Продукт {self.product.name}'
+
+
+class FeaturedProducts(models.Model):
+    featured_product = models.ForeignKey(to=Product, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.featured_product

@@ -27,7 +27,7 @@
                     <div class="breadcrumb_content">
                         <h3>Каталог</h3>
                         <ul>
-                            <li><a href="{% url 'index' %}">home</a></li>
+                            <li><a href="{% url 'index' %}">главная</a></li>
                             <li>каталог</li>
                         </ul>
                     </div>
@@ -37,6 +37,8 @@
     </div>
     {% endblock %}
     <!--breadcrumbs area end-->
+
+
 
     <!--shop  area start-->
     {% block content %}
@@ -48,7 +50,7 @@
                     <aside class="sidebar_widget">
                         <div class="widget_inner">
                             <div class="widget_list widget_categories">
-                                <h3>Women</h3>
+                                <h3>Категории</h3>
                                 <ul>
                                     {% for category in categories %}
                                     <li class="widget_sub_categories sub_categories1"><a
@@ -83,10 +85,10 @@
                                         </div>
                                         <div class="action_links">
                                             <ul>
-                                                <li class="add_to_cart"><a href="{% url 'products:basket_add' product.id %}" title="Add to cart"><i
+                                                <li class="add_to_cart"><a href="{% url 'products:basket_add' product.id %}" title="Добавить в корзину"><i
                                                             class="icon-shopping-bag"></i></a></li>
 
-                                                <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
+                                                <li class="wishlist"><a href="{% url 'products:wishlist_add' product.id %}" title="Добавить в избранное"><i
                                                             class="icon-heart"></i></a></li>
 
                                             </ul>
@@ -106,7 +108,7 @@
 
                                             <div class="price_box">
                                                 <span class="current_price">{{ product.price }}</span>
-                                                <span class="old_price">£74.00</span>
+
                                             </div>
                                         </div>
                                     </div>

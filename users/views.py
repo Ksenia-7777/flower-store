@@ -9,7 +9,7 @@ from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView, UpdateView
 
 from common.views import TitleMixin
-from products.models import Basket
+from products.models import Basket, Wishlist
 from users.forms import UserLoginForm, UserProfileForm, UserRegistrationForm
 from users.models import EmailVerification, User
 
@@ -73,7 +73,8 @@ def profile(request):
         form = UserProfileForm(instance=request.user)
     context = {'title': 'Store-профиль',
                'form': form,
-               'baskets': Basket.objects.filter(user=request.user)
+               'baskets': Basket.objects.filter(user=request.user),
+               'wishlists': Wishlist.objects.filter(user=request.user),
                }
     return render(request, 'users/profile.html', context)
 

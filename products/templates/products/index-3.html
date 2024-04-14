@@ -63,19 +63,19 @@
                             <div class="main_menu menu_three menu_position">
                                 <nav>
                                     <ul>
-                                        <li><a class="active" href="{% url 'index' %}">home</a>
+                                        <li><a class="active" href="{% url 'index' %}">Главная</a>
 
                                         </li>
-                                        <li class="mega_items"><a href="{% url 'products:index' %}">shop</a>
+                                        <li class="mega_items"><a href="{% url 'products:index' %}">Каталог</a>
 
                                         </li>
-                                        <li><a href="blog.html">blog</a>
+                                        <li><a href="blog.html">Блог</a>
 
                                         </li>
-                                        <li><a href="#">pages </a>
+                                        <li><a href="#">О нас</a>
 
                                         </li>
-                                        <li><a href="contact.html"> Contact Us</a></li>
+                                        <li><a href="contact.html">Контакты</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -195,10 +195,10 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="slider_content">
-                                <span>AMAZING FROM Lukani </span>
-                                <h1>BIG SALE <br> NEW ARRIVALS</h1>
-                                <p>Discount 20% Off For Lukani Members </p>
-                                <a class="button" href="{% url 'products:index' %}">Discover Now </a>
+                                <span>ЛУЧШЕЕ В Lukani </span>
+                                <h1>Большая распродажа <br> НОВОЕ ПОСТУПЛЕНИЕ</h1>
+                                <p>Скидка 20% при первом заказе </p>
+                                <a class="button" href="{% url 'products:index' %}">Начать Сейчас </a>
                             </div>
                         </div>
                     </div>
@@ -212,7 +212,7 @@
                                 <span>AMAZING FROM Lukani </span>
                                 <h1>lukani <br> <span>trending 2019</span></h1>
                                 <p>Discount 20% Off For Lukani Members </p>
-                                <a class="button" href="{% url 'products:index' %}">Discover Now </a>
+                                <a class="button" href="{% url 'products:index' %}">Начать сейчас </a>
                             </div>
                         </div>
                     </div>
@@ -226,7 +226,7 @@
                                 <span>AMAZING FROM Lukani </span>
                                 <h1>houseplant <br> <span>amazing cholce</span></h1>
                                 <p>Discount 20% Off For Lukani Members </p>
-                                <a class="button" href="{% url 'products:index' %}">Discover Now </a>
+                                <a class="button" href="{% url 'products:index' %}">Начать сейчас</a>
                             </div>
                         </div>
                     </div>
@@ -249,21 +249,20 @@
                     <div class="col-lg-7 col-md-7">
                         <div class="welcome_lukani_content">
                             <div class="welcome_lukani_header">
-                                <h3>Welcome to Lukani store</h3>
-                                <h2>Lukani History</h2>
+                                <h3>Добро пожаловать в Lukani </h3>
+                                <h2>Lukani история</h2>
                             </div>
                             <div class="welcome_lukani_desc">
-                                <p>Commodo sociosqu venenatis cras dolor sagittis integer luctus sem primis eget
-                                    maecenas
-                                    sedurna malesuada consectetuer.</p>
-                                <p>Ornare integer commodo mauris et ligula purus, praesent cubilia laboriosam viverra.
-                                    Mattis id rhoncus. Integer lacus eu volutpat fusce. Elit etiam phasellus suscipit
-                                    suscipit dapibus,
-                                    condimentum tempor quis, turpis luctus dolor sapien vivamus.</p>
+                                <p>Наш цветочный магазин - это история о любви к красоте и природе,
+                                    вдохновленная искренним желанием поделиться этой любовью с миром. </p>
+                                <p>Когда Мария и Алексей впервые встретились, их сердца замирали от восхищения перед миром цветов.
+                                    Из этой страсти родилась идея создать место, где каждый может насладиться волшебством цветов и
+                                    создать неповторимые букеты, отражающие эмоции и чувства. Добро пожаловать в наш уютный магазин,
+                                    где каждый цветок становится частью вашей истории!.</p>
                             </div>
                             <div class="welcome_lukani_footer">
                                 <img src="{% static 'assets/img/bg/signature.png' %}" alt="">
-                                <p><span>john doe</span> – CEO Lukani</p>
+                                <p><span>john doe</span> –  Lukani</p>
                             </div>
                         </div>
                     </div>
@@ -279,7 +278,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section_title">
-                        <h2>Featured Products</h2>
+                        <h2>Рекомендуемые продукты</h2>
                     </div>
                 </div>
             </div>
@@ -289,10 +288,13 @@
                         <div class="col-lg-3">
                             <div class="product_items">
                                 <article class="single_product">
+
                                     <figure>
+
                                         <div class="product_thumb">
+                                            {% for p in object_list %}
                                             <a class="primary_img" href="product-details.html"><img
-                                                    src="{% static 'assets/img/product/product1.jpg' %}" alt=""></a>
+                                                    src="{{ p.featured_product.image.url }}" alt=""></a>
                                             <div class="label_product">
                                                 <span class="label_sale">-7%</span>
                                             </div>
@@ -322,9 +324,12 @@
                                             <div class="price_box">
                                                 <span class="current_price">£69.00</span>
                                                 <span class="old_price">£74.00</span>
+                                                {% endfor %}
                                             </div>
+
                                         </figcaption>
                                     </figure>
+
                                 </article>
                                 <article class="single_product">
                                     <figure>
@@ -399,6 +404,9 @@
                     <div class="col-lg-2 col-md-3 col-sm-6">
 
                     </div>
+                    <div class="col-lg-2 col-md-3 col-sm-6">
+
+                    </div>
                     <div class="col-lg-4 col-md-5">
                         <div class="widgets_container widget_app">
                             <div class="footer_logo">
@@ -427,7 +435,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6 col-md-6">
                         <div class="copyright_area">
-                            <p class="copyright-text">&copy; 2021 <a href="index.html">Lukani</a>. Made with <i
+                            <p class="copyright-text">&copy; 2024 <a href="index.html">Lukani</a>. Made with <i
                                     class="fa fa-heart text-danger"></i> by <a href="https://hasthemes.com/"
                                     target="_blank">HasThemes</a> </p>
 

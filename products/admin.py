@@ -6,10 +6,10 @@
 
 from django.contrib import admin
 
-from products.models import Basket, Product, ProductCategory
+from products.models import Basket, Product, ProductCategory, FeaturedProducts
 
 admin.site.register(ProductCategory)
-
+admin.site.register(FeaturedProducts)
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):

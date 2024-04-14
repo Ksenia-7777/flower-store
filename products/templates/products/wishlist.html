@@ -185,10 +185,10 @@
             <div class="row">
                 <div class="col-12">
                     <div class="breadcrumb_content">
-                        <h3>Wishlist</h3>
+                        <h3>Избранное</h3>
                         <ul>
-                            <li><a href="{% url 'index' %}">home</a></li>
-                            <li>Wishlist</li>
+                            <li><a href="{% url 'index' %}">главная</a></li>
+                            <li>Избранное</li>
                         </ul>
                     </div>
                 </div>
@@ -208,6 +208,7 @@
                     <div class="col-12">
                         <div class="table_desc wishlist">
                             <div class="cart_page table-responsive">
+                            {% if wishlists %}
                                 <table>
                                     <thead>
                                         <tr>
@@ -220,39 +221,24 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td class="product_remove"><a href="#">X</a></td>
-                                            <td class="product_thumb"><a href="#"><img
-                                                        src="{% static 'assets/img/s-product/product.jpg' %}" alt=""></a></td>
-                                            <td class="product_name"><a href="#">Handbag fringilla</a></td>
-                                            <td class="product-price">£65.00</td>
-                                            <td class="product_quantity">In Stock</td>
-                                            <td class="product_total"><a href="#">Add To Cart</a></td>
+                                {% for wishlist in wishlists %}
 
-                                        </tr>
-                                        <tr>
-                                            <td class="product_remove"><a href="#">X</a></td>
-                                            <td class="product_thumb"><a href="#"><img
-                                                        src="{% static 'assets/img/s-product/product2.jpg' %}" alt=""></a></td>
-                                            <td class="product_name"><a href="#">Handbags justo</a></td>
-                                            <td class="product-price">£90.00</td>
-                                            <td class="product_quantity">In Stock</td>
-                                            <td class="product_total"><a href="#">Add To Cart</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="product_remove"><a href="#">X</a></td>
-                                            <td class="product_thumb"><a href="#"><img
-                                                        src="{% static 'assets/img/s-product/product3.jpg' %}" alt=""></a></td>
-                                            <td class="product_name"><a href="#">Handbag elit</a></td>
-                                            <td class="product-price">£80.00</td>
-                                            <td class="product_quantity">In Stock</td>
-                                            <td class="product_total"><a href="#">Add To Cart</a></td>
+                                    <tr>
+                                        <td class="product_remove"><a href="#">X</a></td>
+                                        <td class="product_thumb"><a href="#"><img
+                                                    src="{{ wishlist.product.image.url }}" alt=""></a></td>
+                                        <td class="product_name"><a href="#">{{ wishlist.product.name }}</a></td>
+                                        <td class="product-price">{{ wishlist.product.price }}</td>
+                                        <td class="product_quantity">In Stock</td>
+                                        <td class="product_total"><a href="#">Add To Cart</a></td>
+
+                                    </tr>
 
 
-                                        </tr>
-
+                                {% endfor %}
                                     </tbody>
                                 </table>
+                            {% endif %}
                             </div>
 
                         </div>
