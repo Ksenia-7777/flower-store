@@ -55,7 +55,7 @@
                     <div class="row align-items-center">
                         <div class="col-lg-2 col-md-3 col-4">
                             <div class="logo">
-                                <a href="index.html"><img src="{% static 'assets/img/logo/logo.png' %}" alt=""></a>
+                                <a href="{% url 'index' %}"><img src="{% static 'assets/img/logo/logo.png' %}" alt=""></a>
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -64,18 +64,10 @@
                                 <nav>
                                     <ul>
                                         <li><a class="active" href="{% url 'index' %}">Главная</a>
-
                                         </li>
-                                        <li class="mega_items"><a href="{% url 'products:index' %}">Каталог</a>
-
-                                        </li>
-                                        <li><a href="blog.html">Блог</a>
-
-                                        </li>
-                                        <li><a href="#">О нас</a>
-
-                                        </li>
-                                        <li><a href="contact.html">Контакты</a></li>
+                                        <li class="mega_items"><a href="{% url 'products:index' %}">Каталог</a></li>
+                                        <li><a href="{% url 'products:about' %}">О нас</a></li>
+                                        <li><a href="{% url 'products:contacts' %}">Контакты</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -209,9 +201,9 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="slider_content">
-                                <span>AMAZING FROM Lukani </span>
-                                <h1>lukani <br> <span>trending 2019</span></h1>
-                                <p>Discount 20% Off For Lukani Members </p>
+                                <span>ПРЕКРАСНОЕ В Lukani </span>
+                                <h1>lukani <br> <span>тренд 2024</span></h1>
+                                <p>Скидка 20% при первом заказе </p>
                                 <a class="button" href="{% url 'products:index' %}">Начать сейчас </a>
                             </div>
                         </div>
@@ -223,9 +215,9 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="slider_content">
-                                <span>AMAZING FROM Lukani </span>
-                                <h1>houseplant <br> <span>amazing cholce</span></h1>
-                                <p>Discount 20% Off For Lukani Members </p>
+                                <span>ПРЕКРАСНОЕ В Lukani </span>
+                                <h1>комнатные растения <br> <span>невероятный выбор</span></h1>
+                                <p>Скидка 20% при первом заказе</p>
                                 <a class="button" href="{% url 'products:index' %}">Начать сейчас</a>
                             </div>
                         </div>
@@ -284,95 +276,82 @@
             </div>
             <div class="product_style2_ocntainer">
                 <div class="row">
-                    <div class="product_carousel product2_column5 owl-carousel">
-                        <div class="col-lg-3">
-                            <div class="product_items">
-                                <article class="single_product">
+                    {% for p in object_list %}
+                    <div class="col-lg-4 col-md-4 col-12 ">
+                            <article class="single_product">
+                                <figure>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img
+                                                src="{{ p.featured_product.image.url }}" alt=""></a>
+                                        <div class="label_product">
+                                            <span class="label_sale">-7%</span>
+                                        </div>
+                                        <div class="action_links">
+                                            <ul>
+                                                <li class="add_to_cart"><a href="" title="Добавить в корзину"><i
+                                                            class="icon-shopping-bag"></i></a></li>
 
-                                    <figure>
+                                                <li class="wishlist"><a href="#" title="Добавить в избранное"><i
+                                                            class="icon-heart"></i></a></li>
 
-                                        <div class="product_thumb">
-                                            {% for p in object_list %}
-                                            <a class="primary_img" href="product-details.html"><img
-                                                    src="{{ p.featured_product.image.url }}" alt=""></a>
-                                            <div class="label_product">
-                                                <span class="label_sale">-7%</span>
-                                            </div>
-                                            <div class="action_links">
-                                                <ul>
-                                                    <li class="add_to_cart"><a href="cart.html" title="Add to cart"><i
-                                                                class="icon-shopping-bag"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="action_links list_action">
+                                            <ul>
+                                                <li class="quick_button"><a href="#" data-toggle="modal"
+                                                        data-target="#modal_box" title="quick view"> <i
+                                                            class="icon-eye"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product_content grid_content">
+                                        <div class="product_price_rating">
 
-                                                    <li class="wishlist"><a href="wishlist.html"
-                                                            title="Add to Wishlist"><i class="icon-heart"></i></a></li>
+                                            <h4 class="product_name"><a href="product-details.html">{{ p.featured_product.name }}</a></h4>
 
-                                                </ul>
+                                            <div class="price_box">
+                                                <span class="current_price">{{ p.featured_product.price }}</span>
+
                                             </div>
                                         </div>
-                                        <figcaption class="product_content">
-                                            <div class="product_rating">
-                                                <ul>
-                                                    <li><a href="#"><i class="icon-star"></i></a></li>
-                                                    <li><a href="#"><i class="icon-star"></i></a></li>
-                                                    <li><a href="#"><i class="icon-star"></i></a></li>
-                                                    <li><a href="#"><i class="icon-star"></i></a></li>
-                                                    <li><a href="#"><i class="icon-star"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <h4 class="product_name"><a href="product-details.html">commodo augue
-                                                    nisi</a></h4>
-                                            <div class="price_box">
-                                                <span class="current_price">£69.00</span>
-                                                <span class="old_price">£74.00</span>
-                                                {% endfor %}
-                                            </div>
-
-                                        </figcaption>
-                                    </figure>
-
-                                </article>
-                                <article class="single_product">
-                                    <figure>
-                                        <div class="product_thumb">
-                                            <a class="primary_img" href="product-details.html"><img
-                                                    src="{% static 'assets/img/product/product2.jpg' %}" alt=""></a>
-                                            <div class="label_product">
-                                                <span class="label_sale">-9%</span>
-                                            </div>
-                                            <div class="action_links">
-                                                <ul>
-                                                    <li class="add_to_cart"><a href="cart.html" title="Add to cart"><i
-                                                                class="icon-shopping-bag"></i></a></li>
-
-                                                    <li class="wishlist"><a href="wishlist.html"
-                                                            title="Add to Wishlist"><i class="icon-heart"></i></a></li>
-
-                                                </ul>
-                                            </div>
+                                    </div>
+                                    <div class="product_content list_content">
+                                        <div class="product_rating">
+                                            <ul>
+                                                <li><a href="#"><i class="icon-star"></i></a></li>
+                                                <li><a href="#"><i class="icon-star"></i></a></li>
+                                                <li><a href="#"><i class="icon-star"></i></a></li>
+                                                <li><a href="#"><i class="icon-star"></i></a></li>
+                                                <li><a href="#"><i class="icon-star"></i></a></li>
+                                            </ul>
                                         </div>
-                                        <figcaption class="product_content">
-                                            <div class="product_rating">
-                                                <ul>
-                                                    <li><a href="#"><i class="icon-star"></i></a></li>
-                                                    <li><a href="#"><i class="icon-star"></i></a></li>
-                                                    <li><a href="#"><i class="icon-star"></i></a></li>
-                                                    <li><a href="#"><i class="icon-star"></i></a></li>
-                                                    <li><a href="#"><i class="icon-star"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <h4 class="product_name"><a href="product-details.html">eget sagittis</a>
-                                            </h4>
-                                            <div class="price_box">
-                                                <span class="current_price">£65.00</span>
-                                                <span class="old_price">£70.00</span>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </article>
-                            </div>
+                                        <h4 class="product_name"><a href="product-details.html">commodo augue nisi</a>
+                                        </h4>
+                                        <div class="price_box">
+                                            <span class="current_price">£69.00</span>
+                                            <span class="old_price">£74.00</span>
+                                        </div>
+                                        <div class="product_desc">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                                                veniam, quis nostrud exercitation ullamco…</p>
+                                        </div>
+                                        <div class="action_links list_action_right">
+                                            <ul>
+                                                <li class="add_to_cart"><a href="#" title="Add to cart">Add to
+                                                        cart</a></li>
+                                                <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
+                                                            class="icon-heart"></i></a></li>
+                                                <li class="compare"><a href="#" title="Add to Compare"><i
+                                                            class="icon-sliders"></i></a></li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </figure>
+                            </article>
                         </div>
-
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>

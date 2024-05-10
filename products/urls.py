@@ -14,9 +14,12 @@ urlpatterns = [
     path('baskets/remove/<int:basket_id>/', basket_remove, name='basket_remove'),
 
     path('wishlists/add/<int:product_id>/', wishlist_add, name='wishlist_add'),
+    path('wishlist/remove/<int:wishlist_id>/', wishlist_remove, name='wishlist_remove'),
 
     path('wishlist/', WishlistView.as_view(), name='wishlist'),
     path('cart/', CartView.as_view(), name='cart'),
 
+    path('about/', AboutUs.as_view(), name='about'),
+    path('contacts/', Contacts.as_view(), name='contacts'),
 
 ]

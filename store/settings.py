@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.yandex',
     'allauth.socialaccount.providers.vk',
     "debug_toolbar",
+    'django.core.paginator',
 
     'products',
     'users',
@@ -230,15 +231,15 @@ INTERNAL_IPS = [
 ]
 
 
-CACHES = {
-    "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379/1",
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
-        }
-    }
-}
+# CACHES = {
+#     "default": {
+#         "BACKEND": "django_redis.cache.RedisCache",
+#         "LOCATION": "redis://127.0.0.1:6379/1",
+#         "OPTIONS": {
+#             "CLIENT_CLASS": "django_redis.client.DefaultClient",
+#         }
+#     }
+# }
 CSRF_COOKIE_SECURE = True
 STRIPE_PUBLIC_KEY = "pk_test_51Ok9IZFAyFbvTwDMtVgKONOiZLxK1Zh6DPWG8WJwpUfVtYvnFMnN5kKA8rougQMVjrsEeC5MmVu6JsrBZD8iiNuX003Htv7sNI"
 STRIPE_SECRET_KEY = 'sk_test_51Ok9IZFAyFbvTwDMnU8XvJQkk7a3ZYJ0izN2k0ZuhBLi0tgqRMtF8N9b1tolomLcYPjKvX48hQicDrOAaxHSGA6N00lJmh54gf'

@@ -125,14 +125,11 @@
 
                                         <li class="mega_items"><a class="active" href="{% url 'products:index' %}">Каталог</a>
 
-                                        </li>
-                                        <li><a href="blog.html">Блог</a>
+
+                                        <li><a href="{% url 'products:about' %}">О нас</a>
 
                                         </li>
-                                        <li><a href="#">О нас</a>
-
-                                        </li>
-                                        <li><a href="contact.html">Контакты</a></li>
+                                        <li><a href="{% url 'products:contacts' %}">Контакты</a></li>
                                     </ul>
                                 </nav>
                             </div>

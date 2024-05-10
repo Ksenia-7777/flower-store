@@ -1,5 +1,23 @@
-{% extends 'products/base.html' %}
+{% extends 'products/basefw.html' %}
 {% load humanize %}
+
+{% block breadcrumbs %}
+<div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <h3>Оформление заказа</h3>
+                    <ul>
+                        <li><a href="{% url 'index' %}">главная</a></li>
+                        <li>оформление заказа</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
 
 {% block content %}
     <section>

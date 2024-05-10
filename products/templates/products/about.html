@@ -1,0 +1,193 @@
+{% extends 'products/basefw.html' %}
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="en">
+
+
+
+<body>
+
+    <!--header area start-->
+
+    <!--offcanvas menu area start-->
+
+    <div class="offcanvas_menu">
+
+    </div>
+
+    <!--offcanvas menu area end-->
+
+    <!--header area end-->
+
+    <!--breadcrumbs area start-->
+    {% block breadcrumbs %}
+    <div class="breadcrumbs_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb_content">
+                        <h3>O Нас</h3>
+                        <ul>
+                            <li><a href="{% url 'index' %}">главная</a></li>
+                            <li>О Нас</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+    <!--breadcrumbs area end-->
+
+    {% block content %}
+    <!--about section area -->
+    <section class="about_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <figure>
+                        <div class="about_thumb">
+                            <img src="{% static 'assets/img/about/about1.jpg' %}" alt="">
+                        </div>
+                        <figcaption class="about_content">
+                            <h1>Добро пожаловать в наш цветочный магазин!</h1>
+                            <p>Наш магазин предлагает широкий ассортимент свежих цветов, оформленных
+                                в потрясающие букеты и композиции, которые подчеркнут ваши эмоции
+                                и особенные моменты жизни. Мы тщательно подбираем каждый цветок, чтобы
+                                гарантировать его свежесть и качество.</p>
+                            <div class="about_signature">
+                                <img src="{% static 'assets/img/about/about-us-signature.png' %}" alt="">
+                            </div>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--about section end-->
+
+    <!--chose us area start-->
+    <div class="choseus_area" data-bgimg="{% static 'assets/img/about/about-us-policy-bg.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4">
+                    <div class="single_chose">
+                        <div class="chose_icone">
+                            <img src="{% static 'assets/img/about/About_icon1.png' %}" alt="">
+                        </div>
+                        <div class="chose_content">
+                            <h3>Креативный дизайн!</h3>
+                            <p>Воплощаем ваше видение в живописных формах и ярких красках.
+                                Откройте дверь в мир бесконечных возможностей с нашим креативным дизайном!</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="single_chose">
+                        <div class="chose_icone">
+                            <img src="{% static 'assets/img/about/About_icon2.png' %}" alt="">
+                        </div>
+                        <div class="chose_content">
+                            <h3>100% гарантия качества</h3>
+                            <p>Мы гарантируем, что каждый наш продукт соответствует высочайшим стандартам качества.</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="single_chose">
+                        <div class="chose_icone">
+                            <img src="{% static 'assets/img/about/About_icon3.png' %}" alt="">
+                        </div>
+                        <div class="chose_content">
+                            <h3>Онлайн поддержка 24/7</h3>
+                            <p>Наши специалисты доступны для вас круглосуточно, готовые помочь в любое время суток.</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--chose us area end-->
+
+    <!--services img area-->
+    <div class="about_gallery_section">
+        <div class="container">
+            <div class="about_gallery_container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4">
+                        <article class="single_gallery_section">
+                            <figure>
+                                <div class="gallery_thumb">
+                                    <img src="{% static 'assets/img/about/about2.jpg' %}" alt="">
+                                </div>
+                                <figcaption class="about_gallery_content">
+                                    <h3>What do we do?</h3>
+                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                                        doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+                                        veritatis et quasi architecto</p>
+                                </figcaption>
+                            </figure>
+                        </article>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <article class="single_gallery_section">
+                            <figure>
+                                <div class="gallery_thumb">
+                                    <img src="{% static 'assets/img/about/about3.jpg' %}" alt="">
+                                </div>
+                                <figcaption class="about_gallery_content">
+                                    <h3>Our Mission</h3>
+                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                                        doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+                                        veritatis et quasi architecto</p>
+                                </figcaption>
+                            </figure>
+                        </article>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <article class="single_gallery_section">
+                            <figure>
+                                <div class="gallery_thumb">
+                                    <img src="{% static 'assets/img/about/about4.jpg' %}" alt="">
+                                </div>
+                                <figcaption class="about_gallery_content">
+                                    <h3>History Of Us</h3>
+                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                                        doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+                                        veritatis et quasi architecto</p>
+                                </figcaption>
+                            </figure>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--services img end-->
+
+    <!--testimonial area start-->
+
+    <!--testimonial area end-->
+    {% endblock %}
+    <!--brand area start-->
+
+    <!--brand area end-->
+
+    <!--footer area start-->
+
+    <!--footer area end-->
+
+
+    <!-- JS
+============================================ -->
+
+
+
+
+</body>
+
+</html>
